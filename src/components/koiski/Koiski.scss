@@ -1,0 +1,172 @@
+$base-color: #e0ff04;
+
+// Responsive
+
+//Extra Large Screen - 1171 to 1920 screen size
+@mixin xlg-screen {
+  @media only screen and (max-width: 1920px) {
+    @content;
+  }
+}
+
+//Large Screen - 993 to 1170 screen size
+@mixin lg-screen {
+  @media only screen and (max-width: 1170px) {
+    @content;
+  }
+}
+
+//Medium Screen - 768 to 992 screen size
+@mixin md-screen {
+  @media only screen and (max-width: 992px) {
+    @content;
+  }
+}
+
+//Medium Screen - 575 to 767 screen size
+@mixin sm-screen {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+//Medium Screen - below 575 screen size
+@mixin xs-screen {
+  @media only screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+section.koiski {
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-area: auto;
+  grid-gap: 10px;
+  padding: 50px 0;
+
+  @include sm-screen {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-item {
+    position: relative;
+    text-align: center;
+    aspect-ratio: 1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .grid-text {
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      border-bottom: 1px solid white;
+      position: absolute;
+      opacity: 0;
+      z-index: 99;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+
+      @include xlg-screen {
+        font-size: 12px;
+      }
+
+      @include lg-screen {
+        font-size: 9px;
+      }
+
+      @include md-screen {
+        font-size: 9px;
+      }
+
+      @include sm-screen {
+        font-size: 7px;
+      }
+    }
+
+    &:hover .grid-text {
+      opacity: 1;
+    }
+
+    .overlay {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: 0.5s ease;
+      background-color: $base-color;
+    }
+    &:hover .overlay {
+      opacity: 0.95;
+    }
+  }
+
+  .koiski-title {
+    position: absolute;
+    z-index: 4;
+    top: 48%;
+    left: 47%;
+    background-color: $base-color;
+    width: 150px;
+    padding: 5px 10px;
+
+    @include lg-screen {
+      top: 46%;
+      left: 43%;
+      width: 130px;
+    }
+
+    @include md-screen {
+      top: 47%;
+      left: 44%;
+      width: 100px;
+      font-size: 18px;
+      line-height: 20px;
+    }
+
+    @include sm-screen {
+      top: 48%;
+      left: 42%;
+      width: 80px;
+    }
+
+    @include xs-screen {
+      top: 47%;
+      left: 40%;
+      width: 60px;
+    }
+
+    span {
+      font-weight: 400;
+      font-size: 25px;
+
+      @include lg-screen {
+        font-size: 22px;
+      }
+
+      @include sm-screen {
+        font-size: 18px;
+      }
+
+      @include xs-screen {
+        font-size: 14px;
+      }
+    }
+  }
+}

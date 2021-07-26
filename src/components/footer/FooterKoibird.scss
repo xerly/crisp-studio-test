@@ -1,0 +1,259 @@
+$base-color: #e0ff04;
+
+// Responsive
+
+//Extra Large Screen - 1171 to 1920 screen size
+@mixin xlg-screen {
+  @media only screen and (max-width: 1920px) {
+    @content;
+  }
+}
+
+//Large Screen - 993 to 1170 screen size
+@mixin lg-screen {
+  @media only screen and (max-width: 1170px) {
+    @content;
+  }
+}
+
+//Medium Screen - 768 to 992 screen size
+@mixin md-screen {
+  @media only screen and (max-width: 992px) {
+    @content;
+  }
+}
+
+//Medium Screen - 575 to 767 screen size
+@mixin sm-screen {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+//Medium Screen - below 575 screen size
+@mixin xs-screen {
+  @media only screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+.footer {
+  width: 10hw;
+  height: 100%;
+  max-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0;
+  background-color: $base-color;
+
+  @include md-screen {
+    flex-direction: column;
+    max-height: 300px;
+  }
+
+  .footer-leftside {
+    flex: 8;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 60px;
+
+    @include md-screen {
+      margin-left: 0;
+      align-items: center;
+    }
+
+    @include sm-screen {
+      margin-left: 0;
+      align-items: center;
+    }
+
+    @include xs-screen {
+      margin-left: 0;
+      align-items: center;
+    }
+
+    .footer-logo {
+      margin-bottom: 30px;
+
+      @include md-screen {
+        margin: 0 auto;
+        margin-bottom: 10px;
+      }
+
+      .footer-logo-svg {
+        cursor: pointer;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 50%;
+
+      @include lg-screen {
+        width: 70%;
+      }
+
+      @include md-screen {
+        margin-bottom: 30px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @include xs-screen {
+        align-items: center;
+        justify-content: center;
+      }
+
+      a {
+        text-decoration: none;
+        font-size: 12px;
+        transition: all 0.2s ease-in-out;
+
+        @include sm-screen {
+          font-size: 10px;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .footer-rightside {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 60px;
+
+    @include md-screen {
+      align-items: center;
+    }
+
+    @include md-screen {
+      margin-right: 0;
+    }
+
+    h5 {
+      color: black;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    form.footer-form {
+      width: 100%;
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      input.form-input {
+        width: 100%;
+        max-width: 400px;
+        display: block;
+        border: none;
+        padding: 7px;
+        background-color: white;
+        margin-bottom: 7px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .input-checkbox {
+        position: relative;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        .checkbox {
+          margin-right: 10px;
+          visibility: hidden;
+        }
+
+        .input-checkbox input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 15px;
+          width: 15px;
+          background-color: white;
+
+          &:hover {
+            background-color: #f1f1f1;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            display: none;
+          }
+        }
+
+        .input-checkbox input:checked ~ .checkmark:after {
+          display: block;
+        }
+
+        .input-checkbox .checkmark:after {
+          left: 9px;
+          top: 5px;
+          width: 5px;
+          height: 10px;
+          border: solid black;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+
+      span {
+        font-size: 10px;
+
+        @include lg-screen {
+          font-size: 7px;
+        }
+
+        @include sm-screen {
+          font-size: 7px;
+        }
+      }
+
+      button.product-shopnow-btn {
+        border: none;
+        background-color: transparent;
+        display: block;
+        margin: 7px 0;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        @include md-screen {
+          margin: 15px auto;
+        }
+
+        &:hover {
+          transform: scale(1.3);
+        }
+
+        h4.shopnow-btn-title {
+          color: black;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
